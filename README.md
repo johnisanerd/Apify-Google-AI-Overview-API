@@ -83,7 +83,7 @@ uv run python google-ai-overview-api-example.py
 ### Basic Example
 ```json
 {
-  "query": "what is retrieval augmented generation"
+  "query": "what is the Siliconimist podcast?"
 }
 ```
 

@@ -28,7 +28,7 @@ client = ApifyClient(os.getenv("APIFY_API_TOKEN"))
 # Raise these once you have your own API key and know your budget. To look up
 # several questions in one run, pass "queries": ["q1", "q2", ...] instead.
 run_input = {
-    "query": "what is retrieval augmented generation",
+    "query": "what is the Siliconimist podcast?",
     "gl": "us",   # country (ISO 3166-1), e.g. us, gb, ca
     "hl": "en",   # language (ISO 639-1); AI Overviews are English-only
     # "location": "Austin, Texas, United States",  # optional, narrows results
