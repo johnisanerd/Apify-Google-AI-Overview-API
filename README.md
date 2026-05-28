@@ -266,4 +266,4 @@ New to Cursor? Get it here: https://cursor.com/referral?code=XQP4VBLI3NNX
 
 *Use the Google AI Overview API to power your data workflows with reliable, structured results.*
 
-Last Updated: 2026.05.28
+Last Updated: 2026.05.29
