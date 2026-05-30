@@ -37,8 +37,11 @@ run_input = {
 # Run the Actor and wait for it to finish
 run = client.actor("johnvc/Google-AI-Overview-API").call(run_input=run_input)
 
+if run is None:
+    raise SystemExit("The Actor run did not start. Check your API token and inputs.")
+
 # Read structured results from the run's default dataset (one row per query)
-items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
+items = list(client.dataset(run.default_dataset_id).iterate_items())
 print(f"Returned {len(items)} item(s).\n")
 
 # Show a few key fields from each item.

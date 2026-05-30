@@ -14,7 +14,7 @@ Send any search query and get back Google's AI Overview, the AI-generated answer
 ## Quick Start
 
 ### Prerequisites
-- Python 3.10 or higher
+- Python 3.11 or higher
 - An Apify account and API key ([get a free key here](https://apify.com?fpr=9n7kx3))
 
 1. **Clone the repository**
@@ -114,7 +114,7 @@ At least one of `query` or `queries` is required.
 
 ## Output Format
 
-One row per query. Each item has a `result_type` of `ai_overview` or `error`.
+One row per query. Each item has a `result_type` of `ai_overview` or `error`. The answer text and sources below are illustrative; your run returns the live AI Overview content and its real citations.
 
 ```json
 {
@@ -126,14 +126,14 @@ One row per query. Each item has a `result_type` of `ai_overview` or `error`.
   "text_blocks": [
     {
       "type": "paragraph",
-      "snippet": "Retrieval-augmented generation (RAG) is a technique that lets large language models retrieve and incorporate information from external sources..."
+      "snippet": "<AI Overview answer paragraph for the query>"
     }
   ],
   "references": [
     {
-      "title": "What is RAG (Retrieval-Augmented Generation)?",
-      "link": "https://www.example.com/what-is-rag",
-      "snippet": "RAG is a process applied to LLMs to make their outputs more relevant...",
+      "title": "<cited source title>",
+      "link": "https://www.example.com/source",
+      "snippet": "<short snippet from the cited source>",
       "source": "Example",
       "index": 1
     }
@@ -148,9 +148,19 @@ When Google does not show an AI Overview for a query, the row comes back with `"
 
 ---
 
+## Use as an MCP tool
+
+You can load the Google AI Overview API as an MCP tool so assistants call it for you. The MCP server URL preloads just this one Actor:
+
+```
+https://mcp.apify.com/?tools=actors,docs,johnvc/Google-AI-Overview-API
+```
+
+Authenticate with OAuth in the browser when offered, or with your Apify API token (the same `APIFY_API_TOKEN` used by the Python example). Get a token at https://console.apify.com/settings/integrations and a free Apify account at https://apify.com?fpr=9n7kx3 .
+
 ## Install in Claude Cowork Desktop
 
-![Install in Claude Cowork Desktop](screenshots/01-claude-cowork-desktop.png)
+![Install in Claude Cowork Desktop](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_claude_desktop.png)
 
 Cowork is the desktop app's automation mode. To give it the Google AI Overview API as a tool, add the Apify MCP server as a connector.
 
@@ -180,11 +190,9 @@ Cowork is the desktop app's automation mode. To give it the Google AI Overview A
 Download the desktop app and start a free trial: https://claude.ai/referral/uIlpa7nPLg
 More help: https://docs.apify.com/platform/integrations/claude-desktop
 
----
-
 ## Install in Claude Code
 
-![Install in Claude Code](screenshots/02-claude-code.png)
+![Install in Claude Code](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_claude_code.png)
 
 Claude Code is the command-line tool. Add the Actor's MCP server with one command:
 
@@ -206,11 +214,9 @@ Then verify with `claude mcp list`, or run `/mcp` inside a session. Ask Claude C
 Try Claude Code free: https://claude.ai/referral/uIlpa7nPLg
 Claude Code MCP docs: https://code.claude.com/docs/en/mcp
 
----
-
 ## Install in Claude (website)
 
-![Install in Claude website](screenshots/03-claude-website.png)
+![Install in Claude (website)](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_claude_ai.png)
 
 On claude.ai you add Apify as a connector, then enable just this Actor's tool.
 
@@ -222,11 +228,9 @@ On claude.ai you add Apify as a connector, then enable just this Actor's tool.
 
 Open Claude on the web: https://claude.ai
 
----
-
 ## Install in Cursor
 
-![Install in Cursor](screenshots/04-cursor.png)
+![Install in Cursor](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_cursor.png)
 
 Cursor reads MCP servers from a project file at `.cursor/mcp.json`.
 
@@ -260,10 +264,26 @@ Cursor reads MCP servers from a project file at `.cursor/mcp.json`.
 
 New to Cursor? Get it here: https://cursor.com/referral?code=XQP4VBLI3NNX
 
+## Install in ChatGPT
+
+![Install in ChatGPT](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_ChatGPT.png)
+
+ChatGPT connects to the Apify MCP server through Developer mode (available on ChatGPT Pro, Plus, Business, Enterprise, and Education plans).
+
+1. Click your profile icon, then go to **Settings > Apps**. If you do not see a **Create app** button, open **Advanced settings** and enable **Developer mode**.
+2. Click **Create app** and fill out the form:
+   - **Name:** Apify
+   - **MCP Server URL:** `https://mcp.apify.com/?tools=actors,docs,johnvc/Google-AI-Overview-API`
+   - **Authentication:** OAuth
+3. Click **Create** and authorize the connection with Apify.
+4. To use the app in a conversation, click **+** in the chat, choose **Developer mode**, and select **Apify**.
+
+More help: https://docs.apify.com/platform/integrations/mcp
+
 ---
 
 [**Made with care**](https://apify.com/johnvc?fpr=9n7kx3)
 
-*Use the Google AI Overview API to power your data workflows with reliable, structured results.*
+*Use the Google AI Overview API to power GEO/AEO monitoring, research, and content workflows with reliable, structured results.*
 
 Last Updated: 2026.05.30
