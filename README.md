@@ -286,4 +286,4 @@ More help: https://docs.apify.com/platform/integrations/mcp
 
 *Use the Google AI Overview API to power GEO/AEO monitoring, research, and content workflows with reliable, structured results.*
 
-Last Updated: 2026.06.11
+Last Updated: 2026.06.14
